@@ -1,0 +1,15 @@
+{
+  "name": "小雪雪 muuua~",
+  "version": "1.40",
+   "permissions": [
+    "tabs", "http://*/*", "https://*/*", "notifications"
+  ],
+  "description": "╮(╯3╰)╭",
+  "browser_action": {
+  	  "default_icon": "imgs/snow.png",
+			"default_popup": "snow.html",
+			"default_title": "snow"
+  },
+  "options_page": "html/options.html",
+  "manifest_version": 1
+}
