@@ -4,15 +4,15 @@
  */
 // <!--------- 留言版------------->
 var S = {};
- S.location = "http://localhost:8080/Snow";
-//S.location = "http://do.jhost.cn/luowen5241";
+ //S.location = "http://localhost:8080/Snow";
+S.location = "http://do.jhost.cn/luowen5241";
 // 消息内容片断
 S.cnt = {
 	p1 : "<div class=message onclick=reply('",
-	p2 : "')><div><a class='link' href=javascript:void(0)>[",
-	p3 : "]&nbsp;</a></div>",
-	p4 : "<div class=msg_dttm>",
-	p5 : "</div></div>"
+	p2 : "')><span class=msg_header ><a class='link' href=javascript:void(0)>[",
+	p3 : "]&nbsp;</a></span><span class=msg_cnt >",
+	p4 : "</span><span class=msg_dttm>",
+	p5 : "</span></span>"
 }
 // 拼接消息块
 function parseToBlock(json) {
@@ -54,14 +54,14 @@ function ajax() {
 		if (j.success == true) {
 			var c = $("#vid_chat_content");
 			c.html('');// clear content
-			for ( var i in j.result) {
-				c.append(parseToBlock(j.result[i]));
+			for (var i=j.result.length-1;i>=0;--i){
+				c.append(parseToBlock(j.result[i])).children().last().css({
+						opacity : .2
+					}).animate({
+						opacity : 1
+					},1000,'swing');
+				
 			}
-			$(".message").css({
-				opacity : .2
-			}).animate({
-				opacity : 1
-			});
 		}
 		autoAjax();
 		addListener_color();
@@ -132,14 +132,16 @@ function addListener_color() {
 
 $(document).ready(function() {
 	$('.btns').each(function() {
+		$(this).css({"opacity":"0.3","color":"black"});
 		$(this).hover(function() {
-			$(this).css("background", "gray");
-			$(this).css("color", "white");
-			$(this).css("cursor", "pointer");
+			$(this).css("opacity", "1");
+			$(this).css("cursor", "pointer");			
 		}, function() {
-			$(this).css("background", "white");
-			$(this).css("color", "black");
+			$(this).css("opacity", "0.3");
 		});
+	});
+	$("#name_").click(function(){
+		$(this).css("border-bottom", "white");
 	});
 });
 

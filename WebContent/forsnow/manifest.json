@@ -1,15 +1,23 @@
 {
-  "name": "小雪雪 muuua~",
-  "version": "1.40",
+  "name": ".小雪雪 muuua~",
+  "version": "1.6.5",
    "permissions": [
     "tabs", "http://*/*", "https://*/*", "notifications"
   ],
   "description": "╮(╯3╰)╭",
   "browser_action": {
-  	  "default_icon": "imgs/snow.png",
-			"default_popup": "snow.html",
-			"default_title": "snow"
+		"default_icon": "imgs/snow.png",
+  	  	"default_popup": "snow.html",
+		"default_title": "snow"
+  },
+  "icons":{
+		"128": "imgs/snow.png"
   },
   "options_page": "html/options.html",
-  "manifest_version": 1
+  "manifest_version": 1,
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["js/forsnow.js"]
+  }],
+  "update_url": "http://do.jhost.cn/luowen5241/crx/update.xml"
 }
